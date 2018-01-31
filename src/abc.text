@@ -1,0 +1,43 @@
+      <table>
+
+                <tbody>
+
+                  {
+                    Object.keys(this.props.todoArr).map((key) => {
+                      return (
+                        <tr id={key}>
+                          <td >
+                            {/*<input disabled="disabled" type="text" value={this.props.todoArr[key].todo} id={key + "txt" } onChange={this.changingValue.bind(this)} />*/}
+                            <input className="form-control" disabled="disabled" type="text"
+                              onChange={this.changingValue.bind(this)}
+                              value={
+
+                                (this.state[key]) ? this.state[key].todo : ''
+                              } id={key + "txt"} />
+                          </td>
+                          <td>
+                            <Checkbox
+                              checked={(this.state[key]) ? this.state[key].done : ''}
+                              onCheck={this.updateCheck.bind(this)
+                              }
+                              style={styles.checkbox}
+                            />
+
+                          </td>
+                          <td >
+                            <button type="button" class="btn btn-info"
+                              onClick={this.editItem.bind(this)}>EDIT</button>
+                          </td>
+                          <td >
+                            <button type="button" class="btn btn-danger"
+                              onClick={this.deleteItem.bind(this)}>DELETE</button>
+                          </td>
+                          {/*{console.log(this.props.todoArr[key].done)}*/}
+                        </tr>
+                      );
+                    })
+
+                  }
+
+                </tbody>
+              </table>
